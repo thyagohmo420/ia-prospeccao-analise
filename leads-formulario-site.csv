@@ -1,0 +1,16 @@
+nome_completo,telefone,email,idade,genero,cidade,estado,queixas,especialidade,convenio
+Maria Silva Santos,11987654321,maria.silva@email.com,35,feminino,São Paulo,SP,Dores de cabeça frequentes e tontura,Clínica Geral,Unimed
+João Pedro Oliveira,11976543210,joao.pedro@email.com,42,masculino,São Paulo,SP,Dor no peito ao fazer esforço,Cardiologia,Bradesco Saúde
+Ana Carolina Souza,11965432109,ana.souza@email.com,28,feminino,Guarulhos,SP,Acne e manchas no rosto,Dermatologia,particular
+Carlos Eduardo Lima,21987654321,carlos.lima@email.com,55,masculino,Rio de Janeiro,RJ,Pressão alta e colesterol elevado,Cardiologia,Amil
+Juliana Costa Alves,11954321098,juliana.costa@email.com,31,feminino,São Paulo,SP,Fadiga constante e ganho de peso,Endocrinologia,SulAmérica
+Roberto Ferreira,11943210987,roberto.f@email.com,48,masculino,Osasco,SP,Dor nas costas há 3 meses,Ortopedia,Unimed
+Fernanda Rodrigues,11932109876,fernanda.r@email.com,26,feminino,São Paulo,SP,Exame preventivo ginecológico,Ginecologia,Bradesco Saúde
+Lucas Martins,11921098765,lucas.martins@email.com,19,masculino,São Paulo,SP,Check-up geral antes de começar academia,Clínica Geral,particular
+Patricia Gomes,11910987654,patricia.gomes@email.com,38,feminino,Santo André,SP,Insônia e ansiedade,Psiquiatria,Amil
+Ricardo Santos,11909876543,ricardo.santos@email.com,52,masculino,São Bernardo,SP,Diabetes tipo 2 descontrolado,Endocrinologia,SulAmérica
+Camila Dias,11998765432,camila.dias@email.com,29,feminino,São Paulo,SP,Planejamento familiar,Ginecologia,Unimed
+André Luiz Costa,11987654322,andre.costa@email.com,45,masculino,Diadema,SP,Dor no joelho ao subir escadas,Ortopedia,particular
+Mariana Almeida,11976543211,mariana.alm@email.com,33,feminino,São Paulo,SP,Queda de cabelo excessiva,Dermatologia,Bradesco Saúde
+Paulo Henrique,11965432110,paulo.h@email.com,60,masculino,São Paulo,SP,Acompanhamento cardiológico de rotina,Cardiologia,Amil
+Beatriz Ribeiro,11954321099,beatriz.ribeiro@email.com,24,feminino,Campinas,SP,Vacinas para viagem internacional,Clínica Geral,particular

@@ -13,7 +13,12 @@
         "dev": "npm run dashboard & npm run automacao",
         "importar": "node importarPlanilha.js",
         "pipeline": "node importarPlanilha.js && node analisarSites.js && node gerarDiagnostico.js && node gerarMensagens.js",
-        "enviar": "node enviarWhatsapp.js"
+        "enviar": "node enviarWhatsapp.js",
+        "b2c:importar": "node importarLeadsB2C.js",
+        "b2c:qualificar": "node qualificarLeadsB2C.js",
+        "b2c:mensagens": "node gerarMensagensB2C.js",
+        "b2c:enviar": "node enviarWhatsapp.js",
+        "b2c:pipeline": "node qualificarLeadsB2C.js && node gerarMensagensB2C.js"
     },
     "dependencies": {
         "@supabase/supabase-js": "^2.39.5",
