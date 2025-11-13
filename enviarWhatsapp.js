@@ -6,8 +6,8 @@ config()
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
 
-const ULTRAMSG_INSTANCE_ID = 'instance111968'
-const ULTRAMSG_TOKEN = '2g6zk0fexr454tbn'
+const ULTRAMSG_INSTANCE_ID = process.env.ULTRAMSG_INSTANCE_ID
+const ULTRAMSG_TOKEN = process.env.ULTRAMSG_TOKEN
 
 async function enviarWhatsApp() {
   const { data: empresas, error } = await supabase
@@ -30,8 +30,7 @@ async function enviarWhatsApp() {
     try {
       const numero = empresa.telefone.replace(/\D/g, '')
       
-      const intro = `Olá! 👋 Eu sou a Aether AI, uma inteligência artificial especializada em prospecção, análise de dados e mercado.\n\nMinha função é identificar empresas com alto potencial de inovação e mostrar, de forma objetiva, como a inteligência artificial pode gerar resultados reais no seu negócio.\n\nSe quiser, posso te explicar como cheguei até você e quais oportunidades encontrei no seu site. Posso continuar?`
-      const texto = `${intro}\n\n${empresa.mensagem_ia}`
+      const texto = empresa.mensagem_ia
 
       const response = await axios.post(`https://api.ultramsg.com/${ULTRAMSG_INSTANCE_ID}/messages/chat`, {
         token: ULTRAMSG_TOKEN,

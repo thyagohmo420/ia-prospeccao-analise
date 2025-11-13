@@ -16,11 +16,23 @@ async function gerarMensagens() {
 
   for (const empresa of empresas) {
     const prompt = `
-Crie uma mensagem personalizada para o lead da empresa "${empresa.nome}".
-Diagnóstico da empresa:
+Crie uma mensagem de WhatsApp personalizada para prospecção da empresa "${empresa.nome}" para nossa clínica médica.
+
+Diagnóstico do lead:
 "${empresa.diagnostico}"
 
-A mensagem deve ser objetiva, consultiva, com tom humano. Mostrar que conhecemos a empresa e temos uma solução de IA útil. Terminar com convite para reunião.
+Diretrizes para a mensagem:
+- Tom profissional mas humano e amigável
+- Máximo de 3-4 parágrafos curtos (adequado para WhatsApp)
+- Demonstrar conhecimento sobre a empresa
+- Destacar 1-2 serviços médicos mais relevantes para este lead
+- Focar nos benefícios para os funcionários e empresa (produtividade, redução de absenteísmo, bem-estar)
+- Incluir uma proposta de valor clara
+- Terminar com convite leve para conversa (sem pressão de venda)
+- Não usar emojis excessivos
+- Não mencionar como obtivemos as informações
+
+A mensagem deve parecer uma prospecção consultiva B2B de qualidade.
 `
 
     const completion = await openai.chat.completions.create({
