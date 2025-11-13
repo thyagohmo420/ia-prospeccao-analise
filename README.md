@@ -7,10 +7,31 @@ Sistema completo de automação de prospecção que utiliza inteligência artifi
 - 💡 Geração de diagnósticos personalizados por lead
 - 📩 Criação e envio de mensagens consultivas via WhatsApp
 - 🧠 Gestão completa no Supabase como CRM inteligente
+- 📊 **Dashboard Web Interativo** - Gerencie tudo visualmente
+- 🤖 **Automação Inteligente** - Execução agendada automática
+
+---
+
+## ⚡ Início Rápido
+
+```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Configurar .env (copie do .env.example e preencha)
+cp .env.example .env
+
+# 3. Iniciar Dashboard + Automação
+npm run dev
+```
+
+Acesse o dashboard em: **http://localhost:3000**
 
 ---
 
 ## 🚀 Funcionalidades
+
+### Core Features
 
 - 🔍 **Análise Inteligente**: Analisa sites de empresas para identificar oportunidades
 - 📈 **Diagnóstico Personalizado**: IA avalia potencial do lead e sugere serviços médicos relevantes
@@ -19,6 +40,23 @@ Sistema completo de automação de prospecção que utiliza inteligência artifi
 - ☁️ **CRM Integrado**: Todos os dados armazenados no Supabase em tempo real
 - 🔄 **Controle de Status**: Acompanhamento do funil de prospecção
 - 🎯 **Segmentação**: Identifica os melhores leads e serviços para cada empresa
+
+### Dashboard Web
+
+- 📊 **Estatísticas em Tempo Real**: Visualize métricas instantaneamente
+- 📈 **Métricas de Conversão**: Acompanhe a eficiência do funil
+- ⚙️ **Controle do Pipeline**: Execute qualquer etapa manualmente
+- ➕ **Adicionar Leads**: Interface para adicionar leads individualmente
+- 📋 **Gestão de Leads**: Visualize, filtre e gerencie todos os leads
+- 🔍 **Detalhes Completos**: Veja análises, diagnósticos e mensagens
+
+### Automação
+
+- ⏰ **Análise Diária**: Analisa novos leads automaticamente às 9h
+- 🧠 **Diagnósticos Automáticos**: Gera diagnósticos às 14h
+- 📤 **Envio Automático**: Envia mensagens seg-sex às 10h
+- 🚀 **Pipeline Semanal**: Executa pipeline completo toda segunda às 8h
+- 🔄 **Verificação Periódica**: Checa novos leads a cada 2 horas
 
 ---
 
@@ -31,8 +69,17 @@ ia-prospeccao-analise/
 ├── gerarMensagens.js         # Gera mensagens personalizadas
 ├── enviarWhatsapp.js         # Envia mensagens via UltraMsg
 ├── importarPlanilha.js       # Importa leads do CSV para Supabase
+├── automacao.js              # Sistema de automação com agendamento
 ├── leads-clinica-medica.csv  # Exemplo de arquivo com leads
 ├── executar-prospeccao.bat   # Script para executar pipeline completo
+├── dashboard/                # Dashboard web
+│   ├── server.js            # Servidor Express + APIs REST
+│   └── public/              # Interface do dashboard
+│       ├── index.html       # Página principal
+│       ├── css/style.css    # Estilos
+│       └── js/app.js        # Lógica do frontend
+├── DASHBOARD-GUIA.md         # Documentação do dashboard
+├── GUIA-TESTES.md            # Guia de testes
 └── .env                      # Configurações (não commitar!)
 ```
 
@@ -43,9 +90,11 @@ ia-prospeccao-analise/
 - **Node.js** - Runtime JavaScript
 - **OpenAI GPT-4** - Análise inteligente e geração de conteúdo
 - **Supabase** - Banco de dados e CRM
+- **Express** - Framework web para APIs e dashboard
 - **Cheerio** - Web scraping dos sites
 - **UltraMsg** - API para envio via WhatsApp
 - **Axios** - Requisições HTTP
+- **node-cron** - Agendamento de tarefas automáticas
 
 ---
 
@@ -96,7 +145,33 @@ CREATE TABLE empresas (
 
 ## 🎯 Como Usar
 
-### Pipeline Completo (Windows)
+### Opção 1: Dashboard e Automação (Recomendado)
+
+```bash
+# Iniciar dashboard + automação
+npm run dev
+
+# Ou separadamente:
+npm run dashboard   # Apenas dashboard (http://localhost:3000)
+npm run automacao   # Apenas automação agendada
+```
+
+**O sistema ficará 100% automatizado!** A automação cuidará de tudo nos horários agendados.
+
+📖 **Documentação completa**: Veja [DASHBOARD-GUIA.md](DASHBOARD-GUIA.md)
+
+### Opção 2: Comandos NPM
+
+```bash
+npm run importar     # Importa leads do CSV
+npm start            # Analisa sites
+npm run diagnostico  # Gera diagnósticos
+npm run mensagens    # Gera mensagens
+npm run enviar       # Envia via WhatsApp
+npm run pipeline     # Executa tudo (exceto envio)
+```
+
+### Opção 3: Pipeline Completo (Windows)
 
 Execute o arquivo `executar-prospeccao.bat` que rodará todos os passos automaticamente:
 
@@ -104,7 +179,7 @@ Execute o arquivo `executar-prospeccao.bat` que rodará todos os passos automati
 executar-prospeccao.bat
 ```
 
-### Passo a Passo Manual
+### Opção 4: Passo a Passo Manual
 
 #### 1. Importar Leads
 

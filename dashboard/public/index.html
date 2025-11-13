@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Prospecção Clínica Médica</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏥 Prospecção Clínica Médica - IA</h1>
+            <div class="system-status">
+                <span class="status-indicator" id="system-status">
+                    <span class="pulse"></span> Sistema Online
+                </span>
+            </div>
+        </header>
+
+        <!-- Cards de Estatísticas -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-content">
+                    <h3>Total de Leads</h3>
+                    <p class="stat-number" id="total-leads">-</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-content">
+                    <h3>Pendentes</h3>
+                    <p class="stat-number" id="pendentes">-</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔍</div>
+                <div class="stat-content">
+                    <h3>Analisados</h3>
+                    <p class="stat-number" id="analisados">-</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                    <h3>Finalizados</h3>
+                    <p class="stat-number" id="finalizados">-</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📤</div>
+                <div class="stat-content">
+                    <h3>Enviados</h3>
+                    <p class="stat-number" id="enviados">-</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Métricas de Conversão -->
+        <section class="metrics-section">
+            <h2>📈 Métricas de Conversão</h2>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-label">Análise Concluída</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="metric-analise" style="width: 0%"></div>
+                    </div>
+                    <span class="metric-value" id="metric-analise-value">0%</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Diagnóstico Gerado</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="metric-diagnostico" style="width: 0%"></div>
+                    </div>
+                    <span class="metric-value" id="metric-diagnostico-value">0%</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Mensagem Criada</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="metric-mensagem" style="width: 0%"></div>
+                    </div>
+                    <span class="metric-value" id="metric-mensagem-value">0%</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">Taxa de Envio</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="metric-envio" style="width: 0%"></div>
+                    </div>
+                    <span class="metric-value" id="metric-envio-value">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Controls -->
+        <section class="pipeline-section">
+            <h2>⚙️ Controle do Pipeline</h2>
+            <div class="pipeline-controls">
+                <button class="btn btn-primary" onclick="runPipeline('importar')">
+                    📥 Importar Leads
+                </button>
+                <button class="btn btn-primary" onclick="runPipeline('analisar')">
+                    🔍 Analisar Sites
+                </button>
+                <button class="btn btn-primary" onclick="runPipeline('diagnosticar')">
+                    🩺 Gerar Diagnósticos
+                </button>
+                <button class="btn btn-primary" onclick="runPipeline('mensagens')">
+                    📝 Gerar Mensagens
+                </button>
+                <button class="btn btn-primary" onclick="runPipeline('enviar')">
+                    📤 Enviar WhatsApp
+                </button>
+                <button class="btn btn-success" onclick="runPipeline('completo')">
+                    🚀 Pipeline Completo
+                </button>
+            </div>
+            <div id="pipeline-status" class="pipeline-status"></div>
+        </section>
+
+        <!-- Adicionar Lead Manual -->
+        <section class="add-lead-section">
+            <h2>➕ Adicionar Lead Manual</h2>
+            <form class="add-lead-form" onsubmit="addLead(event)">
+                <div class="form-group">
+                    <input type="text" id="lead-nome" placeholder="Nome da Empresa" required>
+                </div>
+                <div class="form-group">
+                    <input type="url" id="lead-site" placeholder="Site (https://...)" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lead-telefone" placeholder="Telefone (opcional)">
+                </div>
+                <button type="submit" class="btn btn-success">Adicionar Lead</button>
+            </form>
+        </section>
+
+        <!-- Lista de Leads -->
+        <section class="leads-section">
+            <div class="leads-header">
+                <h2>📋 Lista de Leads</h2>
+                <div class="leads-filters">
+                    <label>Filtrar por status:</label>
+                    <select id="filter-status" onchange="filterLeads()">
+                        <option value="todos">Todos</option>
+                        <option value="pendente">Pendentes</option>
+                        <option value="analisado">Analisados</option>
+                        <option value="finalizado">Finalizados</option>
+                        <option value="mensagem_enviada">Enviados</option>
+                    </select>
+                    <button class="btn btn-small" onclick="loadLeads()">🔄 Atualizar</button>
+                </div>
+            </div>
+            <div id="leads-container" class="leads-container">
+                <p class="loading">Carregando leads...</p>
+            </div>
+        </section>
+
+        <!-- Modal para detalhes do lead -->
+        <div id="lead-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="modal-title">Detalhes do Lead</h2>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
